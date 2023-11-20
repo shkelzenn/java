@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Html-CSS-Javascript</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      const makinat = [
+        "BMW",
+        "VW",
+        "AUDI",
+        "FIAT",
+        "SUZUKI",
+        "NISSAN",
+        "MERCEDES",
+      ];
+      const personi = {
+        emri: "Shaban",
+        mbiemri: "Haxha",
+        vjet: 28,
+        idnr: 1020304920,
+        emriPrindit: "Kapllan",
+      };
+      const kurset = [
+        {
+          emri: "Front End Development",
+          teklogjite: ["JS", "HTML", "CSS", "ReactJS"],
+          ligjerues: "Gezim Koshi",
+          dataFillimit: "2023-11-1",
+          dataMbarimit: "2023-12-15",
+          oreTotal: 40,
+          cmimi: 150,
+        },
+        {
+          emri: "Video Editing",
+          teklogjite: ["Adobe Premiere"],
+          ligjerues: "Kushtrim Hoti",
+          dataFillimit: "2023-10-1",
+          dataMbarimit: "2023-11-15",
+          oreTotal: 40,
+          cmimi: 120,
+        },
+        {
+          emri: "Graphic Desitn",
+          teklogjite: ["Adobe Photoshop", "Adobe Illustrator"],
+          ligjerues: "Yll Haxhiu",
+          dataFillimit: "2023-09-1",
+          dataMbarimit: "2023-11-15",
+          oreTotal: 40,
+          cmimi: 100,
+        },
+      ];
+      function boDiqka(vleren1, vleren2) {
+        let diqka = makinat[0] + " edhe " + makinat[6];
+        let koha = new Date().toISOString();
+        let kohandame = koha.split("T");
+        console.log("ndame", koha, kohandame);
+        console.log(
+          vleren1 + ": kush jam ti?  ",
+          vleren2 + ": " + personi.emri + " " + personi.mbiemri
+        );
+        console.log("sa vjet i pate ti?  ", personi.vjet);
+        console.log("i biri kujt je ti?  ", personi.emriPrindit);
+        console.log("cfare makine perdor ?", makinat[4]);
+        console.log("sa vjet i ka bab: ", 83);
+        console.log("sa osht data sot? ", makinat[6].slice(0, 4));
+        // document.getElementById('shfaq').innerHTML = "data: " + kohandame[0] + " ora: " + kohandame[1].slice(0,8);
+        document.getElementById("shfaq").innerHTML = kurset[1].cmimi.toString();
+        console.log("teknologjia", kurset[2].teklogjite[1]);
+      }
+      function boDiqkaTjeter() {
+        kurset.map((el, index) => {
+          const objDiv = document.createElement("div");
+          const objProfi = document.createElement("div");
+          objDiv.classList.add("kurset");
+          objDiv.setAttribute("id", "kurset-" + index);
+          objDiv.textContent = el.emri;
+          objProfi.textContent = el.ligjerues;
+          const shfaqi = document.getElementById("shfaq");
+          shfaqi.appendChild(objDiv);
+          objDiv.appendChild(objProfi);
+
+          // const objDiv
+          // console.log("map", index, el.emri + " Ligjerues: " +  el.ligjerues);
+          // el.teklogjite.map((tech, i) =>{
+          //     console.log(index,i,tech);
+          // });
+          // if(el.cmimi < 150) {
+          //     console.log("map", index, el.emri + " Ligjerues: " +  el.ligjerues);
+          // }
+          // let muaji = el.dataFillimit.slice(5,7);
+          // console.log(muaji);
+          // if( muaji === "09") {
+          //     console.log("map", index, el.emri + " Ligjerues: " +  el.ligjerues);
+          // }
+        });
+      }
+    </script>
+    <button onclick="boDiqka('kushtrimi', 'programi')">boDiqka</button>
+    <button onclick="boDiqkaTjeter()">boDiqka tjeter</button>
+    <div id="shfaq"></div>
+  </body>
+</html>

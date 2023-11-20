@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Html-CSS-Javascript</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      var inputOne;
+      var inputTwo;
+      function kalkulo() {
+        inputOne = document.getElementById("inone").value;
+        inputTwo = document.getElementById("intwo").value;
+        // console.log("vlera", inputOne, inputTwo);
+        let kalkulimi = inputOne * inputTwo;
+        document.getElementById("myDiv").innerHTML = kalkulimi;
+      }
+
+      function Toggle() {
+        let ngjyra = document.getElementById("myDiv").style.backgroundColor;
+        if (ngjyra !== "gray") {
+          console.log("ngjyra aktuale: ", ngjyra);
+
+          document.getElementById("myDiv").style.backgroundColor = "gray";
+        } else {
+          console.log("ngjyra aktuale: ", ngjyra);
+          document.getElementById("myDiv").style.backgroundColor = "green";
+        }
+      }
+
+      function menu() {
+        let statusi = document.getElementById("menuDiv").style.display;
+        console.log("statusi", statusi);
+        if (statusi === "none") {
+          document.getElementById("menuDiv").style.display = "block";
+          document.getElementById("btnMenu").innerHTML = "Menu On";
+        } else {
+          document.getElementById("menuDiv").style.display = "none";
+          document.getElementById("btnMenu").innerHTML = "Menu Off";
+        }
+        // // var x;
+        // // var y;
+        // // x = 10;
+        // // y = 120;
+        // // let rezultati = x * y;
+        // // console.log(
+        // //   "Rezultati i variablave x=" +
+        // //     x +
+        // //     " duke u shumezuar me y=" +
+        // //     y +
+        // //     " e ka shumen =",
+        // //   rezultati
+        // );
+      }
+    </script>
+
+    <button
+      onclick="document.getElementById('myDiv').style.backgroundColor = 'Gray'"
+    >
+      Ndalu
+    </button>
+    <button
+      onclick="document.getElementById('myDiv').style.backgroundColor = 'Green'"
+    >
+      Dhezu
+    </button>
+    <button onclick="Toggle()">Toggle</button>
+    <button id="btnMenu" onclick="menu()">Menu</button>
+    <button onclick="kalkulo()">kalkulo</button>
+    <input type="number" id="inone" />
+    <input type="number" id="intwo" />
+    <div id="myDiv" style="background-color: green"></div>
+    <div id="menuDiv" style="display: none">shaban redi</div>
+  </body>
+</html>

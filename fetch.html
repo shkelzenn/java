@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Html-CSS-Javascript</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      var kartela = [];
+      var produktetGlobal;
+
+      function addtocard(index) {
+        console.log("poKlikohna", produktetGlobal);
+        kartela.push(produktetGlobal[index]);
+        console.log("shporta", kartela);
+      }
+      async function callApi() {
+        const apiCall = await fetch("https://fakestoreapi.com/products");
+        const produktet = await apiCall.json();
+
+        console.log("complete response", apiCall);
+        console.log("qka po kethen", produktet);
+        if (produktet.length > 0) {
+          produktetGlobal = produktet;
+          produktet.map((el, index) => {
+            // console.log(index, el);
+            // if (index < 10) {
+            const prodDiv = document.createElement("div");
+            const prodImg = document.createElement("img");
+            const prodAdd = document.createElement("button");
+            const renderoj = document.getElementById("shfaq");
+            const dataToCard = {
+              title: el.title,
+              price: el.price,
+              image: el.image,
+            };
+            prodDiv.setAttribute("id", "prduct-" + index);
+            prodDiv.classList.add("kurset");
+            prodDiv.textContent = el.title + " | cmimi:" + el.price + "EUR";
+            prodImg.setAttribute("src", el.image);
+            prodImg.setAttribute("style", "width: 150px;");
+            prodAdd.textContent = "Shto ne shporte";
+            let id = Number(index);
+            prodAdd.setAttribute("onclick", "addtocard(" + index + ")");
+            renderoj.appendChild(prodDiv);
+            prodDiv.appendChild(prodImg);
+            prodDiv.appendChild(prodAdd);
+            // }
+          });
+        }
+      }
+      callApi();
+    </script>
+    <!-- <button onclick="boDiqka('kushtrimi', 'programi')">Test</button> -->
+    <!-- <button onclick="callApi()">call api</button> -->
+    <div id="shfaq"></div>
+  </body>
+</html>
